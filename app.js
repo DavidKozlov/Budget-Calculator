@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded"), () => {
     // const CareInput = document.querySelector("#CareInput");
     // const InsuranceHealthInput = document.querySelector("#InsuranceHealthInput");
     // const 
-    const income = document.querySelectorAll("article.income input"),
-        housing = document.querySelectorAll("article.housing input"),
-        health = document.querySelectorAll("article.health input"),
-        auto = document.querySelectorAll("article.auto input"),
-        education = document.querySelectorAll("article.education input"),
-        loans = document.querySelectorAll("article.loans input"),
-        savings = document.querySelectorAll("article.savings input"),
-        giving = document.querySelectorAll("article.giving input"),
-        misc = document.querySelectorAll("article.misc input");
+    const income = document.getElementById("article.income input"),
+        housing = document.getElementById("article.housing input"),
+        health = document.getElementById("article.health input"),
+        auto = document.getElementById("article.auto input"),
+        education = document.getElementById("article.education input"),
+        loans = document.getElementById("article.loans input"),
+        savings = document.getElementById("article.savings input"),
+        giving = document.getElementById("article.giving input"),
+        misc = document.getElementById("article.misc input");
     // Use all of these inside of the function to calculate the total monthtly expenses.
 
     // Do if statements for each of the categories, including housing, health, etc.
