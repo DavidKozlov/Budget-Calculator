@@ -6,202 +6,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="./app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
     <nav id="nav">
         <img src="Images\Group 18.svg">
-        <a class="Home" href="index.html">Home</a>
+        <a class="home" href="index.html">Home</a>
     </nav>
-    <h1 class="Title">BUDGET PLANNER</h1>
-    <span class="Planner">
-        <article class="Income">
+    <h1 class="title">BUDGET PLANNER</h1>
+    <span class="planner">
+        <article class="income current">
             <!--For every article, before the h2 of each article put step counter using JS-->
             <h2>Income</h2>
             <div>
                 <h3>Total Net.</h3>
-                <input id="NetInput" type='text' placeholder="Type here..."></input>
+                <input id="net-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Winnings</h3>
-                <input id="WinInput" type='text' placeholder="Type here..."></input>
+                <input id="win-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherIncomeInput" type='text' placeholder="Type here..."></input>
+                <input id="other-income-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Housing">
+        <article class="housing">
             <h2>Housing</h2>
             <div>
                 <h3>Mortgage</h3>
-                <input id="MortgageInput" data-expense="housing" type='text' placeholder="Type here..."></input>
+                <input id="mortgage-input" data-expense="housing" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Insurance</h3>
-                <input id="InsuranceHouseInput" type='text' placeholder="Type here..."></input>
+                <input id="insurance-house-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Property Tax</h3>
-                <input id="PropTaxInput" type='text' placeholder="Type here..."></input>
+                <input id="prop-tax-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Utilities</h3>
-                <input id="UtilInput" type='text' placeholder="Type here..."></input>
+                <input id="util-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Groceries</h3>
-                <input id="GroceriesInput" type='text' placeholder="Type here..."></input>
+                <input id="groceries-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Child Care</h3>
-                <input id="CareInput" type='text' placeholder="Type here..."></input>
+                <input id="care-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Health">
+        <article class="health">
             <h2>Health</h2>
             <div>
                 <h3>Insurance</h3>
-                <input id="InsuranceHealthInput" type='text' placeholder="Type here..."></input>
+                <input id="insurance-health-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Medical Expenses</h3>
-                <input id="MedInput" type='text' placeholder="Type here..."></input>
+                <input id="med-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherHealthInput" type='text' placeholder="Type here..."></input>
+                <input id="other-health-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Auto">
+        <article class="auto">
             <h2>Auto</h2>
             <div>
                 <h3>Loan Payments</h3>
-                <input id="LoanPayInput" type='text' placeholder="Type here..."></input>
+                <input id="loan-pay-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Insurance</h3>
-                <input id="InsuranceAutoInput" type='text' placeholder="Type here..."></input>
+                <input id="insurance-auto-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Public Transportation</h3>
-                <input id="PublicTranInput" type='text' placeholder="Type here..."></input>
+                <input id="public-tran-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Fuel & Maintenance</h3>
-                <input id="MaintenanceInput" type='text' placeholder="Type here..."></input>
+                <input id="maintenance-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherAutoInput" type='text' placeholder="Type here..."></input>
+                <input id="other-auto-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Education">
+        <article class="education">
             <h2>Education</h2>
             <div>
                 <h3>Tuition</h3>
-                <input id="TuitionInput" type='text' placeholder="Type here..."></input>
+                <input id="tuition-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Fees</h3>
-                <input id="FeesInput" type='text' placeholder="Type here..."></input>
+                <input id="fees-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Textbooks</h3>
-                <input id="BooksInput" type='text' placeholder="Type here..."></input>
+                <input id="books-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Supplies</h3>
-                <input id="SuppliesInput" type='text' placeholder="Type here..."></input>
+                <input id="supplies-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherEduInput" type='text' placeholder="Type here..."></input>
+                <input id="other-edu-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Loans">
+        <article class="loans">
             <h2>Loans</h2>
             <div>
                 <h3>Student Loans</h3>
-                <input id="StudentLoansInput" type='text' placeholder="Type here..."></input>
+                <input id="student-loans-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Credit Cards</h3>
-                <input id="CreditInput" type='text' placeholder="Type here..."></input>
+                <input id="credit-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherLoansInput" type='text' placeholder="Type here..."></input>
+                <input id="other-loans-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Savings">
+        <article class="savings">
             <h2>Savings</h2>
             <div>
                 <h3>Educational Savings</h3>
-                <input id="EduSavingsInput" type='text' placeholder="Type here..."></input>
+                <input id="edu-savings-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Investments</h3>
-                <input id="InvestInput" type='text' placeholder="Type here..."></input>
+                <input id="invest-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherSavingsInput" type='text' placeholder="Type here..."></input>
+                <input id="other-savings-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Giving">
+        <article class="giving">
             <h2>Giving</h2>
             <div>
                 <h3>Gifts</h3>
-                <input id="GiftsInput" type='text' placeholder="Type here..."></input>
+                <input id="gifts-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Donations</h3>
-                <input id="DonationsInput" type='text' placeholder="Type here..."></input>
+                <input id="donations-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherGiftInput" type='text' placeholder="Type here..."></input>
+                <input id="other-gift-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Next">Next</button>
         </article>
-        <article class="Misc">
+        <article class="misc">
             <h2>Miscellaneous</h2>
             <div>
                 <h3>Entertainment</h3>
-                <input id="EntertainmentInput" type='text' placeholder="Type here..."></input>
+                <input id="entertainment-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Travel</h3>
-                <input id="TravelInput" type='text' placeholder="Type here..."></input>
+                <input id="travel-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Clothing</h3>
-                <input id="ClothingInput" type='text' placeholder="Type here..."></input>
+                <input id="clothing-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Personal Care</h3>
-                <input id="PersonalCareInput" type='text' placeholder="Type here..."></input>
+                <input id="personal-care-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Purchases</h3>
-                <input id="PurchasesInput" type='text' placeholder="Type here..."></input>
+                <input id="purchases-input" type="number" placeholder="Type here..."></input>
             </div>
             <div>
                 <h3>Other</h3>
-                <input id="OtherMiscInput" type='text' placeholder="Type here..."></input>
+                <input id="other-misc-input" type="number" placeholder="Type here..."></input>
             </div>
-            <button id="Done">Done! Go Back to Start?</button>
         </article>
+        <section class="navigation">
+            <button class="back hidden">Back</button>
+            <button class="back-to-start">Back To Start</button>
+            <button class="next">Next</button>
+        </section>
     </span>
-    <span class="Information">
+    <span class="information">
         <canvas class="chart"></canvas>
         <section class="203050">
             <!--Generate using javascript-->
@@ -213,40 +211,40 @@
             <div class="20">
             </div>
         </section>
-        <span class="InfoList">
-            <div class="CCDollar">
+        <span class="infoList">
+            <div class="cCDollar">
                 <img src="Images\CurrencyCircleDollar.svg">
                 <p>Income</p>
             </div>
-            <div class="HouseSimple">
+            <div class="houseSimple">
                 <img src="Images\HouseSimple.svg">
                 <p>Housing and Living Expenses</p>
             </div>
-            <div class="HeartStraight">
+            <div class="heartStraight">
                 <img src="Images\HeartStraight.svg">
                 <p>Health</p>
             </div>
-            <div class="CarProfile">
+            <div class="carProfile">
                 <img src="Images\CarProfile.svg">
                 <p>Auto and Transportation</p>
             </div>
-            <div class="BookPic">
+            <div class="bookPic">
                 <img src="Images\Book.svg">
                 <p>Education</p>
             </div>
-            <div class="CreditCardPic">
+            <div class="creditCardPic">
                 <img src="Images\CreditCard.svg">
                 <p>Loans and Credit Cards</p>
             </div>
-            <div class="PiggyBankPic">
+            <div class="piggyBankPic">
                 <img src="Images\PiggyBank.svg">
                 <p>Savings and Investing</p>
             </div>
-            <div class="GiftPic">
+            <div class="giftPic">
                 <img src="Images\Gift.svg">
                 <p>Giving</p>
             </div>
-            <div class="Dots">
+            <div class="dots">
                 <img src="Images\DotsThreeCircle.svg">
                 <p>Misc.</p>
             </div>
