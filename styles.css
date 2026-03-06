@@ -94,7 +94,9 @@ input::placeholder {
 }
 
 .information {
-    display: flex;
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    place-content: center;
     background-color: var(--Light-Green);
     width: 95vw;
     justify-content: center;
@@ -128,19 +130,109 @@ article:not(.current) {
     display: none;
 }
 
+/* Input fields section */
+.planner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 article {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-auto-flow: column;
+    place-content: center;
+    gap: 20% 30%;
+    margin: 100px 0;
+
+    & * {
+        text-wrap: nowrap;
+    }
     & h2 {
         grid-column: 1 / span 3;
         grid-row: 1;
+
+        font-size: 40px;
+        text-align: center;
+
+        background-color: var(--Highlight-Blue);
+        border-radius: var(--Border-Radius);
+        box-shadow: 10px 10px black;
+        width: 100%;
     }
     & div:nth-child(3n + 1) {
         grid-column: 3;
     }
     & div:nth-child(2n + 1):not(:nth-child(3n + 1)) {
         grid-column: 2;
+    }
+}
+
+/* Next, back buttons */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 15px;
+    margin: 15px 0px;
+    width: 75%;
+
+    & * {
+        flex: 1 0 0;
+
+        background-color: var(--Highlight-Blue);
+        padding: 30px;
+        border-radius: var(--Border-Radius);
+        border: 0;
+        box-shadow: 5px 5px 0 black;
+
+        text-wrap: nowrap;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 0;
+    }
+}
+
+/* All below is the Donut chart */
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Chart */
+.leftSide div {
+    --chart-size: 30vw;
+    width: var(--chart-size);
+    height: var(--chart-size);
+}
+
+.wantsNeedsSavings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 75px;
+    padding: 10px 20px;
+    background-color: var(--Light-Yellow);
+
+    max-height: 50px;
+    max-width: 200px;
+    line-height: 32.5px;
+
+    box-shadow: 5px 5px 0 black, 5px 5px 0 white inset;
+}
+
+/* Right Side */
+.infoList div {
+    display: flex;
+    align-items: center;
+
+    margin-top: 30px;
+    & p {
+        margin-left: 20px;
     }
 }

@@ -1,4 +1,6 @@
+// Getting each article
 const [...articles] = document.querySelectorAll('article');
+// Getting the inputs in each article
 const all_da_inputs = articles.map(article =>
     article.querySelectorAll('input')
 );
@@ -10,6 +12,7 @@ const reset = /** @type {HTMLButtonElement} */ (
 
 let current_section = 0;
 
+// Page nagivation with next, back, back to start
 next.addEventListener('click', () => {
     navigate(current_section + 1);
 });
@@ -22,6 +25,8 @@ reset.addEventListener('click', () => {
     navigate(0);
 });
 
+
+// Setting sections to be visible or not visible based on current_section variable
 /**
  * @param {number} section
  */
@@ -43,6 +48,7 @@ function navigate(section) {
     }
 }
 
+// Add all the values in each input on the section
 /**
  * @param {NodeListOf<HTMLInputElement>} inputs
  */
@@ -50,6 +56,7 @@ function sum(inputs) {
     return [...inputs].reduce((a, b) => a + b.valueAsNumber, 0);
 }
 
+// Donut chart
 const canvas = document.querySelector('canvas');
 let current_chart = null;
 
@@ -72,6 +79,7 @@ function update() {
     });
 }
 
+// Whenever you input something, update donut chart
 document.body.addEventListener('input', () => {
     update();
 });
