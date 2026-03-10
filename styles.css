@@ -25,13 +25,15 @@ body {
 
 #nav {
     display: flex;
-    align-content:flex-start;
-    justify-content: space-between; /* using justify content makes the "home" and "info" spaced out, might need to be fixed*/
+    gap: 30px;
     padding: 30px;
     background-color: var(--Light-Green);
     margin: 0;
-
-    & > a.home {
+    & div {
+        align-self: center;
+        margin-left: auto;
+    }
+    & a.home {
         align-self: center;
         border: 1px solid black;
         box-sizing: border-box;
@@ -42,7 +44,8 @@ body {
         
     }
 
-    & > a.info {
+    & a.info {
+        margin-left: 30px;
         align-self: center;
         border: 1px solid black;
         box-sizing: border-box;
@@ -122,11 +125,13 @@ input::placeholder {
     place-content: center;
     background-color: var(--Light-Green);
     width: 95vw;
+    min-height: 1000px;
     justify-content: center;
     justify-self: center;
     border-radius: var(--Border-Radius);
     box-shadow: 20px 20px 0 black;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .info-list {
@@ -231,7 +236,7 @@ article {
 
 /* Chart */
 .leftSide div {
-    --chart-size: 30vw;
+    --chart-size: 20vw;
     width: var(--chart-size);
     height: var(--chart-size);
 }
@@ -272,9 +277,43 @@ article {
     justify-content: space-between;
     padding: 30px;
     gap: 25px;
+    flex-direction: column;
+    
     /* this area is unfinished  */
 
-    & > h3 {
+    & h3 {
+        align-self: center;
+        font-size: 30px;
+        font-weight: bolder;
         margin-left: 20px;
     }
+    & p {
+        font-weight:bold;
+    }
+    & img {
+        width: 40px;
+        height: 40px;
+    }
+    & div {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.infobox {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--Light-Green);
+    width: fit-content;
+    min-width: 50vw;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    justify-content: center;
+    justify-self: center;
+    border-radius: var(--Border-Radius);
+    box-shadow: 20px 20px 0 black;
+}
+
+.title {
+    margin-top: 60px;
 }
