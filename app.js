@@ -52,8 +52,10 @@ function navigate(section) {
 /**
  * @param {NodeListOf<HTMLInputElement>} inputs
  */
+
 function sum(inputs) {
-    return [...inputs].reduce((a, b) => a + b.valueAsNumber, 0);
+    // FIX THIS AHHHHHH
+    return [...inputs.filter((word) => !word.classList.includes("net-input", ""))].reduce((a, b) => a + b.valueAsNumber, 0);
 }
 
 // Donut chart
