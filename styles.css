@@ -25,19 +25,30 @@ body {
 
 #nav {
     display: flex;
-    align-content: center;
-    justify-content: space-between;
+    align-content:flex-start;
+    justify-content: space-between; /* using justify content makes the "home" and "info" spaced out, might need to be fixed*/
     padding: 30px;
     background-color: var(--Light-Green);
     margin: 0;
 
-    & > a {
+    & > a.home {
         align-self: center;
         border: 1px solid black;
         box-sizing: border-box;
         padding: 10px;
         text-decoration: none;
         background-color: var(--Light-Yellow);
+        box-shadow: 5px 5px 0 black, 5px 5px 0 white inset;
+        
+    }
+
+    & > a.info {
+        align-self: center;
+        border: 1px solid black;
+        box-sizing: border-box;
+        padding: 10px;
+        text-decoration: none;
+        background-color: var(--Cyan);
         box-shadow: 5px 5px 0 black, 5px 5px 0 white inset;
     }
 }
@@ -54,7 +65,18 @@ h1 {
     font-weight: 700;
     text-decoration: none;
 
-    & > a:visited {
+    &>a:visited {
+        color: black;
+    }
+}
+
+
+.info {
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+
+    &>a:visited {
         color: black;
     }
 }
@@ -66,6 +88,7 @@ h1 {
     width: 95vw;
     justify-content: center;
     justify-self: center;
+    margin-top: 120px;
     border-radius: var(--Border-Radius);
     box-shadow: 20px 20px 0 black;
 }
@@ -150,6 +173,7 @@ article {
     & * {
         text-wrap: nowrap;
     }
+
     & h2 {
         grid-column: 1 / span 3;
         grid-row: 1;
@@ -162,9 +186,11 @@ article {
         box-shadow: 10px 10px black;
         width: 100%;
     }
+
     & div:nth-child(3n + 1) {
         grid-column: 3;
     }
+
     & div:nth-child(2n + 1):not(:nth-child(3n + 1)) {
         grid-column: 2;
     }
@@ -232,7 +258,23 @@ article {
     align-items: center;
 
     margin-top: 30px;
+
     & p {
+        margin-left: 20px;
+    }
+}
+
+/* extra */
+.extra {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    padding: 30px;
+    gap: 25px;
+    /* this area is unfinished  */
+
+    & > h3 {
         margin-left: 20px;
     }
 }
