@@ -123,6 +123,107 @@ function update() {
             ]
         }
     });
+
+    // Update wants/needs/savings summary beneath the chart
+    updateWantsNeedsSavings();
+}
+
+/**
+ * Compute Wants/Needs/Savings totals and render into the
+ * .wantsNeedsSavings section. Compares against 50/30/20 targets.
+ *
+ * Catagories:
+ * - Article class names map to categories: needs = housing, health, loans
+ * - wants = auto, education, giving, misc
+ * - savings = savings
+ * - Targets are 50% (needs), 30% (wants), 20% (savings)
+ * - Acceptable range is ±10 percentage points (e.g. needs: 40% - 60%)
+ */
+function updateWantsNeedsSavings() {
+    const clamp = v => (Number.isFinite(v) ? v : 0);
+
+    function sumInputs(nodeList) {
+        return Array.from(nodeList || []).reduce((t, input) => {
+            const n = Number(input.value);
+            return t + (Number.isFinite(n) ? n : 0);
+        }, 0);
+    }
+
+    const incomeArticle = document.querySelector('article.income');
+    const incomeTotal = incomeArticle ? sumInputs(incomeArticle.querySelectorAll('input')) : 0;
+
+    const category = (cls) => {
+        const art = document.querySelector(`article.${cls}`);
+        return art ? sumInputs(art.querySelectorAll('input')) : 0;
+    }
+
+    const needs = clamp(category('housing') + category('health') + category('loans'));
+    const wants = clamp(category('auto') + category('education') + category('giving') + category('misc'));
+    const savings = clamp(category('savings'));
+
+    const totalExpenses = needs + wants + savings;
+    const denom = incomeTotal > 0 ? incomeTotal : (totalExpenses > 0 ? totalExpenses : 1);
+
+    const percent = (value) => (value / denom) * 100;
+
+    const needsPct = percent(needs);
+    const wantsPct = percent(wants);
+    const savingsPct = percent(savings);
+
+    const targets = { needs: 50, wants: 30, savings: 20 };
+    const acceptable = 10; // percentage points
+
+    const container = document.querySelector('.wantsNeedsSavings');
+    if (!container) return;
+
+    // Prepare three lines (matching HTML order: 50 / 30 / 20)
+    const createLine = (label, amount, pct, target) => {
+        const out = document.createElement('div');
+        out.className = 'wns-line';
+
+        const labelEl = document.createElement('div');
+        labelEl.className = 'wns-label';
+        labelEl.textContent = label;
+
+        const valueEl = document.createElement('div');
+        valueEl.className = 'wns-value';
+        valueEl.textContent = `$${amount.toLocaleString(undefined, {maximumFractionDigits:2})} — ${pct.toFixed(1)}%`;
+
+        // mark out-of-range
+        if (Math.abs(pct - target) > acceptable) {
+            valueEl.classList.add('out-of-range');
+        } else {
+            valueEl.classList.remove('out-of-range');
+        }
+
+        const targetEl = document.createElement('div');
+        targetEl.className = 'wns-target';
+        targetEl.textContent = `Target: ${target}% (±${acceptable}%)`;
+
+        // layout: label left, value middle, target right (value will be emphasized)
+        out.appendChild(labelEl);
+        out.appendChild(valueEl);
+        out.appendChild(targetEl);
+        return out;
+    }
+
+    // clear existing content in the child divs and re-populate
+    const needsDiv = container.querySelector('.p50');
+    const wantsDiv = container.querySelector('.p30');
+    const savingsDiv = container.querySelector('.p20');
+
+    if (needsDiv) {
+        needsDiv.innerHTML = '';
+        needsDiv.appendChild(createLine('Needs', needs, needsPct, targets.needs));
+    }
+    if (wantsDiv) {
+        wantsDiv.innerHTML = '';
+        wantsDiv.appendChild(createLine('Wants', wants, wantsPct, targets.wants));
+    }
+    if (savingsDiv) {
+        savingsDiv.innerHTML = '';
+        savingsDiv.appendChild(createLine('Savings', savings, savingsPct, targets.savings));
+    }
 }
 
 // Whenever you input something, update donut chart
