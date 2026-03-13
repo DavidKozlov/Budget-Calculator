@@ -13,16 +13,16 @@
     --Border-Radius: 0.75rem;
 }
 
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-img {
-    --image-size: 50px;
-    width: var(--image-size);
-    height: var(--image-size);
+button {
+    background: transparent;
+    border: transparent;
 }
 
 body {
@@ -60,6 +60,19 @@ body {
         background-color: var(--Cyan);
         box-shadow: 5px 5px 0 black, 5px 5px 0 white inset;
     }
+}
+
+a:hover {
+    color: black;
+}
+a:visited {
+    color: black;
+}
+
+img {
+    --image-size: 50px;
+    width: var(--image-size);
+    height: var(--image-size);
 }
 
 h1 {
@@ -101,6 +114,7 @@ h1 {
     justify-content: center;
     justify-self: center;
     margin-top: 120px;
+    padding-bottom: 80px;
     border-radius: var(--Border-Radius);
     box-shadow: 20px 20px 0 black;
 }
@@ -108,15 +122,12 @@ h1 {
 /* Step Counter */
 #stepCounter {
     display: flex;
+    justify-content: space-between;
     place-content: center;
     gap: 7em;
 
-    margin-top: 50px;
-
     & button {
-        background-color: #1bedca00;
         border: 0;
-        
         & img {
             --step-size: 50px;
             width: var(--step-size);
@@ -130,6 +141,30 @@ h1 {
         height: var(--step-size);
     }
 }
+/* Fix: actual IDs used in HTML are #stepCounters (wrapper) and #stepCounter1 (inner row).
+   Add explicit CSS so margin-top and layout are applied correctly in the browser. */
+#stepCounters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 50px; /* working margin-top for the step counter */
+}
+
+#stepCounter1 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#stepCounter1 button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+
+#stepCounter1 img {
+    display: contents;
+}
 .stepItem {
     --icon-size: 50px;
     width: var(--icon-size);
@@ -141,14 +176,13 @@ h1 {
     }
 }
 .lineItem {
-    width: 50px;
+    width: 45.5px;
 }
 
 /* Make the line stuff */
 #stepCounter button:not(:last-child):after {
     content: "";
     width: 6em;
-    border: 2px solid black;
     position: absolute;
     transform: translate(1em, 1.85em);
 }
@@ -182,7 +216,7 @@ input::placeholder {
     place-content: center;
     background-color: var(--Light-Green);
     width: 95vw;
-    min-height: 420px; /* reduced so right column doesn't force huge height */
+    min-height: 800px; /* reduced so right column doesn't force huge height */
     justify-content: center;
     justify-self: center;
     border-radius: var(--Border-Radius);
@@ -225,10 +259,10 @@ article:not(.current) {
 
 article {
     display: grid;
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, minmax(20vw, 1fr));
     grid-auto-rows: auto;
     gap: 1.5rem 2rem;
-    margin: 60px 0;
+    margin: 60px 0px;
     padding: 1rem 2rem;
 
     & * {
@@ -260,7 +294,7 @@ article {
     align-items: stretch;
     gap: 15px;
     margin: 15px 0px;
-    width: 75%;
+    width: 65vw;
 
     & * {
         flex: 1 0 0;
@@ -284,9 +318,12 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
+    place-content: center;
     width: min(420px, 42vw);
+    height: min(700px, 50vh);
+    margin-top: 0px;
     box-sizing: border-box;
-    align-self: start; 
+    align-self: center; 
     margin-left: 10vw;
 }
 
@@ -301,7 +338,7 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
     padding: 10px 20px;
     background-color: var(--Light-Yellow);
     width: 100%;
@@ -309,43 +346,66 @@ article {
     box-shadow: 5px 5px 0 black, 5px 5px 0 white inset;
     align-self: start; /* pin to top of column */
     max-height: 260px; /* keep it from stretching too far */
-    overflow: auto;
+    overflow: none;
+
+    & > h2 {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
 
     & > div {
         width: 100%;
+        height: 75px;
         display: block;
         padding: 6px 8px;
         box-sizing: border-box;
     }
 
-    /* each generated line inside the section */
+    /* each generated line inside the section - three-column flex layout */
     .wns-line {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        gap: 0.5rem;
-        margin: 6px 0;
+        gap: 0.75rem;
+        margin: 0px 0px;
+        width: 100%;
+        justify-content: space-between;
     }
 
+    /* left: label grows and can shrink to allow value/target to fit */
     .wns-label {
-        flex: 1 1 60%;
+        flex: 1 1 auto;
         min-width: 0; /* allow flex shrinking */
-        overflow-wrap: anywhere;
+        overflow-wrap: none;
+        margin-right: 0.5rem;
     }
 
+    /* middle: amount + percent - keep on one line if possible */
     .wns-value {
-        flex: 0 1 auto; /* allow value to shrink/wrap if needed */
+        text-align: right;
         white-space: nowrap;
-        margin-left: 0.5rem;
+        color: var(--Green)
     }
 
     .wns-target {
-        flex: 1 1 100%; /* force target onto next line when narrow */
-        white-space: normal;
-        color: #333;
-        font-size: 0.85rem;
+        flex: 0 0 160px;
+        text-align: right;
+        color: #6c6c6c;
+        font-weight: 300;
         margin-left: 0.5rem;
         opacity: 0.9;
+        white-space: normal;
+    }
+
+    @media (max-width: 520px) {
+        .wns-line {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+        .wns-value, .wns-target {
+            flex: 0 0 auto;
+            text-align: left;
+        }
     }
 
     & .wns-label {
@@ -366,7 +426,7 @@ article {
 .infoList div {
     display: flex;
     align-items: center;
-
+    max-height: 30vh;
     margin-top: 30px;
 
     & p {

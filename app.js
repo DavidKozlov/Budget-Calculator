@@ -31,6 +31,7 @@ const arrayOfSteps = document.querySelectorAll(".stepItem")
 for (const stepButton of arrayOfSteps) {
     stepButton.addEventListener("click", () => {
         navigate(stepButton.getAttribute("navTo"))
+        
     })
 }
 
@@ -58,7 +59,7 @@ function navigate(section) {
         back.classList.remove('hidden');
     }
 
-    // Change inmages of step counter
+    // Change images of step counter
     for (const stepButton of arrayOfSteps) {
         const buttonImg = stepButton.children[0]
 
@@ -118,13 +119,13 @@ function update() {
             datasets: [
                 {
                     label: 'Monthly (USD)',
-                    data: all_da_inputs.map(inputs => sum(inputs))
+                    data: all_da_inputs.map(inputs => sum(inputs)),
+                    backgroundColor: ["#f9c74f", "#457b9d", "#e63946", "#1bedca", "#f3722c", "#2a9d8f", "#e8727b", "#9d2a6f", "#f1faee"]
                 }
             ]
         }
     });
 
-    // Update wants/needs/savings summary beneath the chart
     updateWantsNeedsSavings();
 }
 
@@ -137,7 +138,7 @@ function update() {
  * - wants = auto, education, giving, misc
  * - savings = savings
  * - Targets are 50% (needs), 30% (wants), 20% (savings)
- * - Acceptable range is ±10 percentage points (e.g. needs: 40% - 60%)
+ * - Acceptable range is ±10 percentage points
  */
 function updateWantsNeedsSavings() {
     const clamp = v => (Number.isFinite(v) ? v : 0);
