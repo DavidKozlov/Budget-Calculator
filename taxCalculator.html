@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tax Calculator</title>
+    <link href='https://fonts.googleapis.com' rel='stylesheet'>
+    <script src="calc.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="nav">
+        <img src="Images\Group 18.svg" />
+        <div>
+          <a class="home" href="index.html">Home</a>
+          <a class="calc" href="taxCalculator.html">Tax Calc.</a>
+          <a class="info" href="extra.html">Info.</a>
+        </div>
+      </nav>
+    </header>
+    <h1 class="title">Tax and Income Calculator</h1>
+    <section class="GAI">
+      <h2 class="gross">Gross Annual Income</h2>
+      <span class="calculations">
+        <select id="occu" class="elem1">
+          <option value="unanswered">Select Occupation</option>
+        </select>
+        <div class="elem2">
+          <label class="income">Income</label>
+          <label id="salaryContainer">$<span id="salary"></span></label>
+        </div>
+        <div class="elem3">
+            <label for="other-taxes">Medicare, Social Security, and State Tax</label>
+            <label type="text" id="otherTaxContainer"></label>
+        </div>
+        <div class="elem4">
+          <label for="tax-income">Post-Tax Income</label>
+          <label type="text" id="taxContainer"></label>
+        </div>
+      </span>
+    </section>
+  </body>
+</html>
