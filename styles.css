@@ -78,6 +78,9 @@ a:hover {
 a:visited {
   color: black;
 }
+a:link {
+    color: black;
+}
 
 .title {
   margin-top: 50px;
